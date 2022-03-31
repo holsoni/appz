@@ -11,14 +11,23 @@
 
 package com.example.appza.model;
 
-public enum Sport {
-    Л_а,
-    Баскетбол,
-    Волейбол,
-    Вільна_боротьба,
-    Плавання,
-    Бокс,
-    Футбол,
-    Теніс,
-    Гімнастика
+import lombok.Data;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import java.util.Date;
+import java.util.UUID;
+
+@Data
+@Entity(name = "sport")
+public class Sport {
+    @Id
+    private UUID id;
+    private String sport;
+
+    private Date created_at;
+    private Date modified_at;
+    private String description;
 }

@@ -14,22 +14,23 @@ package com.example.appza.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Date;
+import java.util.UUID;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Entity()
+@Entity(name = "buildings")
 public class Building {
 
-    private String id;
+    @Id
+    private UUID id;
     private String name;
     private String address;
 
-    private Date createdAt;
-    private Date modifiedAt;
+    private Date created_at;
+    private Date modified_at;
     private String description;
+
 }

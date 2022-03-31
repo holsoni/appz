@@ -11,14 +11,16 @@
 
 package com.example.appza.model;
 
-public enum Degree {
-    МСМК,
-    МС,
-    КМС,
-    І_дорослий,
-    ІІ_дорослий,
-    ІІІ_дорослий,
-    І_юнацький,
-    ІІ_юнацький,
-    ІІІ_юнацький
+import lombok.Data;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.util.UUID;
+@Data
+@Entity(name="degree")
+public class Degree {
+    @Id
+    private UUID id;
+    private String degree;
+
 }

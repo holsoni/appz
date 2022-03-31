@@ -14,31 +14,28 @@ package com.example.appza.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 
+
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
+import java.util.UUID;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Entity(name = "coach")
 public class Coach {
     @Id
-    private String id;
+    private UUID id;
     private String name;
     private int year;
-    private Sport sport;
+    @OneToMany
+    private List<Sport> sport;
+    @ManyToOne
     private SportClub sportClub;
 
-    private Date createdAt;
-    private Date modifiedAt;
+    private Date created_at;
+    private Date modified_at;
     private String description;
 
-    public Coach(String id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public String getSportClubName(){
-        return sportClub.getName();
-    }
 }

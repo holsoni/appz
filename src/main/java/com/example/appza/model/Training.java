@@ -15,21 +15,30 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Entity(name="training")
 public class Training {
-    private String id;
+    @Id
+    private UUID id;
+    @ManyToOne
+    @JoinColumn(name="sport_id")
     private Sport sport;
+    @OneToMany
     private List<Sportsmen> sportsmen;
+    @ManyToOne
+    @JoinColumn(name="coach_id")
     private Coach coach;
+    @ManyToOne
+    @JoinColumn(name = "building_id")
     private Building sportInfrastructure;
 
-    private Date createdAt;
-    private Date modifiedAt;
+    private Date created_at;
+    private Date modified_at;
     private String description;
 
 }

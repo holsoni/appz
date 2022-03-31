@@ -14,25 +14,30 @@ package com.example.appza.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.util.Date;
+import java.util.UUID;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Entity(name = "competition")
 public class Competition {
     @Id
-    private String id;
+    private UUID id;
     private String name;
+    @ManyToOne
     private Sport sport;
+    @ManyToOne
     private Building building;
-    private CompetitionOrganizer competitionOrganizer;
+    private String competitionOrganizer;
     private int events;
 
-    private Date createdAt;
-    private Date modifiedAt;
+    private Date created_at;
+    private Date modified_at;
     private String description;
+
 
 
 }

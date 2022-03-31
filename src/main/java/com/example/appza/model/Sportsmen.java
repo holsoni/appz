@@ -13,29 +13,35 @@ package com.example.appza.model;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.annotation.Id;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.util.Date;
+import java.util.UUID;
 
 @Data
-@RequiredArgsConstructor
+@Entity(name = "sportsmen")
 public class Sportsmen {
-
-    private String id;
+    @Id
+    private UUID id;
     private String name;
     private int year;
+    @ManyToOne
+    @JoinColumn(name="sportclub_id")
     private SportClub sportClub;
+    @ManyToOne
+    @JoinColumn(name="sport_id")
     private Sport sport;
+    @ManyToOne
+    @JoinColumn(name="degree_id")
     private Degree degree;
 
-    private Date createdAt;
-    private Date modifiedAt;
+    private Date created_at;
+    private Date modified_at;
     private String description;
 
-    public Sportsmen(String id, String name) {
-        this.id = id;
-        this.name = name;
-    }
 
 
 }
