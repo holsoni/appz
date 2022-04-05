@@ -20,7 +20,7 @@ import java.util.UUID;
 @Entity(name="degree")
 public class Degree {
     @Id
-    private UUID id;
+    private Long id;
     private String degree;
 
 }

@@ -24,7 +24,7 @@ import java.util.UUID;
 @Entity(name = "sport")
 public class Sport {
     @Id
-    private UUID id;
+    private Long id;
     private String sport;
 
     private Date created_at;

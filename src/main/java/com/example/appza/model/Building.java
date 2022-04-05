@@ -25,7 +25,7 @@ import java.util.UUID;
 public class Building {
 
     @Id
-    private UUID id;
+    private Long id;
     private String name;
     private String address;
 

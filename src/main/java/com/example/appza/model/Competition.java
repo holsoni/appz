@@ -25,7 +25,7 @@ import java.util.UUID;
 @Entity(name = "competition")
 public class Competition {
     @Id
-    private UUID id;
+    private Long id;
     private String name;
     @ManyToOne
     private Sport sport;

@@ -4,9 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -16,11 +14,14 @@ import java.util.UUID;
 @Entity(name="sportclub")
 public class SportClub {
     @Id
-    private UUID id;
+    private Long id;
     private String creator;
     private String foundationYear;
-    @OneToMany
-    private List<Sport> specializations;
+    @ManyToMany
+    @JoinTable(name="sportclub_specializations",
+            joinColumns=@JoinColumn (name="sportclub_id"),
+            inverseJoinColumns=@JoinColumn(name="specialization_id"))
+    private Set<Sport> specializations;
     private double rating;
 
     private Date created_at;

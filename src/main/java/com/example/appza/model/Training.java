@@ -18,18 +18,22 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Data
 @Entity(name="training")
 public class Training {
     @Id
-    private UUID id;
+    private Long id;
     @ManyToOne
     @JoinColumn(name="sport_id")
     private Sport sport;
-    @OneToMany
-    private List<Sportsmen> sportsmen;
+    @ManyToMany
+    @JoinTable(name="sportsman_training",
+            joinColumns=@JoinColumn(name="training_id"),
+            inverseJoinColumns=@JoinColumn(name="sportsman_id"))
+    private Set<Sportsmen> sportsmen;
     @ManyToOne
     @JoinColumn(name="coach_id")
     private Coach coach;
