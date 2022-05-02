@@ -15,29 +15,30 @@ public class BuildingController {
 
     private final BuildingService service;
 
-    @GetMapping()
+    @GetMapping("/getAll/{size}/{page}")
     public ResponseEntity<Page<Building>> getAll(@RequestParam(required = false, defaultValue = "10") int size,
                                                 @RequestParam(required = false,defaultValue = "1") int page){
 
         return ResponseEntity.ok(service.getAll(page,size));
     }
 
-    @GetMapping("/{id}")
-    public List<Building> getById(@PathVariable Long id) {
-        return null;
+    @GetMapping("/getById/{id}")
+    public Building getById(@PathVariable Long id) {
+        return service.getById(id);
     }
 
-    @PostMapping()
+    @PostMapping("/create")
     public Building create(@RequestBody Building building) {
-        return null;
+        return service.create(building);
     }
 
-    @PutMapping("/{id}")
-    public Building update(@PathVariable Long id, @RequestBody Building building) {
-        return null;
+    @PutMapping("/update")
+    public Building update( @RequestBody Building building) {
+        return service.update(building);
     }
-    @DeleteMapping("/{id}")
-    public Building delete(Long id) {
-        return null;
+
+    @DeleteMapping("/delete/{id}")
+    public String delete(@PathVariable Long id) {
+        return service.delete(id);
     }
 }

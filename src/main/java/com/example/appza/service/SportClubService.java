@@ -1,7 +1,9 @@
 package com.example.appza.service;
 
 import com.example.appza.model.Building;
+import com.example.appza.model.SportClub;
 import com.example.appza.repository.BuildingRepository;
+import com.example.appza.repository.SportClubRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -10,31 +12,31 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class BuildingService {
+public class SportClubService {
 
 
-    private final BuildingRepository repo;
+    private final SportClubRepository repo;
 
-    public Page<Building> getAll(int page, int size){
+    public Page<SportClub> getAll(int page, int size){
         Pageable pageable = PageRequest.of(page, size);
         return repo.findAll(pageable);
     };
-    public Building getById(Long id){
+    public SportClub getById(Long id){
         return repo.getById(id);
     }
 
-    public Building create(Building building){
-        return repo.save(building);
+    public SportClub create(SportClub sportClub){
+        return repo.save(sportClub);
     }
 
-    public Building update(Building building){
-        repo.deleteById(building.getId());
-        repo.save(building);
-        return building;
+    public SportClub update(SportClub sportClub){
+        repo.deleteById(sportClub.getId());
+        repo.save(sportClub);
+        return sportClub;
     }
 
     public String delete(Long id){
         repo.deleteById(id);
-        return "Building " + id + " deleted succesfully";
+        return "SportClub " + id + " deleted succesfully";
     }
 }
