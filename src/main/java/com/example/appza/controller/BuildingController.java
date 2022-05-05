@@ -1,13 +1,14 @@
 package com.example.appza.controller;
 
 import com.example.appza.model.Building;
-import com.example.appza.service.BuildingService;
+import com.example.appza.service.Building.BuildingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @RestController("/building")
 @RequiredArgsConstructor
@@ -23,18 +24,18 @@ public class BuildingController {
     }
 
     @GetMapping("/getById/{id}")
-    public Building getById(@PathVariable Long id) {
-        return service.getById(id);
+    public ResponseEntity<Optional<Building>> getById(@PathVariable Long id) {
+        return ResponseEntity.ok(service.getById(id));
     }
 
     @PostMapping("/create")
-    public Building create(@RequestBody Building building) {
-        return service.create(building);
+    public ResponseEntity<Building> create(@RequestBody Building building) {
+        return ResponseEntity.ok(service.create(building));
     }
 
     @PutMapping("/update")
-    public Building update( @RequestBody Building building) {
-        return service.update(building);
+    public ResponseEntity<Building> update( @RequestBody Building building) {
+        return ResponseEntity.ok(service.update(building));
     }
 
     @DeleteMapping("/delete/{id}")

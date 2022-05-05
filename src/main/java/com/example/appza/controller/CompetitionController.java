@@ -1,16 +1,13 @@
 package com.example.appza.controller;
 
-import com.example.appza.model.Building;
-import com.example.appza.model.Coach;
 import com.example.appza.model.Competition;
-import com.example.appza.service.BuildingService;
-import com.example.appza.service.CompetitionService;
+import com.example.appza.service.Competition.CompetitionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/competition")
@@ -25,7 +22,7 @@ public class CompetitionController {
     }
 
     @GetMapping("/getById/{id}")
-    public Competition getById(@PathVariable Long id) {
+    public Optional<Competition> getById(@PathVariable Long id) {
         return service.getById(id);
     }
 

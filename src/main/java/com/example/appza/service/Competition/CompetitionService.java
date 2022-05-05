@@ -1,14 +1,14 @@
-package com.example.appza.service;
+package com.example.appza.service.Competition;
 
-import com.example.appza.model.Building;
 import com.example.appza.model.Competition;
-import com.example.appza.repository.BuildingRepository;
 import com.example.appza.repository.CompetitionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -22,8 +22,8 @@ public class CompetitionService {
         return repo.findAll(pageable);
     }
 
-    public Competition getById(Long id){
-        return repo.getById(id);
+    public Optional<Competition> getById(Long id){
+        return repo.findById(id);
     }
 
     public Competition create(Competition competition){
