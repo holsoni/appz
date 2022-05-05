@@ -1,16 +1,13 @@
 package com.example.appza.controller;
 
-import com.example.appza.model.Building;
-import com.example.appza.model.Coach;
 import com.example.appza.model.Competition;
-import com.example.appza.service.BuildingService;
-import com.example.appza.service.CompetitionService;
+import com.example.appza.service.Competition.CompetitionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/competition")
@@ -25,7 +22,7 @@ public class CompetitionController {
     }
 
     @GetMapping("/getById/{id}")
-    public Competition getById(@PathVariable Long id) {
+    public Competition getById(@PathVariable UUID id) {
         return service.getById(id);
     }
 
@@ -35,11 +32,11 @@ public class CompetitionController {
     }
 
     @PutMapping("/update")
-    public Competition update(@PathVariable Long id, @RequestBody Competition competition) {
+    public Competition update(@PathVariable UUID id, @RequestBody Competition competition) {
         return service.update(competition);
     }
     @DeleteMapping("/delete/{id}")
-    public String delete(Long id) {
+    public String delete(UUID id) {
         return service.delete(id);
     }
 }

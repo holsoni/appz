@@ -12,6 +12,7 @@
 package com.example.appza.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -23,9 +24,12 @@ import java.util.UUID;
 
 @Data
 @Entity(name="training")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Training {
     @Id
-    private Long id;
+    private UUID id;
     @ManyToOne
     @JoinColumn(name="sport_id")
     private Sport sport;

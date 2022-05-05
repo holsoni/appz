@@ -1,4 +1,4 @@
-package com.example.appza.service;
+package com.example.appza.service.Competition;
 
 import com.example.appza.model.Building;
 import com.example.appza.model.Competition;
@@ -9,6 +9,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -22,7 +24,7 @@ public class CompetitionService {
         return repo.findAll(pageable);
     }
 
-    public Competition getById(Long id){
+    public Competition getById(UUID id){
         return repo.getById(id);
     }
 
@@ -36,7 +38,7 @@ public class CompetitionService {
         return competition;
     }
 
-    public String delete(Long id){
+    public String delete(UUID id){
         repo.deleteById(id);
         return "Competition " + id + " deleted succesfully";
     }

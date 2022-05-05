@@ -11,21 +11,20 @@
 
 package com.example.appza.model;
 
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.UUID;
 
 @Data
 @Entity(name = "sportsmen")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Sportsmen {
     @Id
-    private Long id;
+    private UUID id;
     private String name;
     private int year;
     @ManyToOne

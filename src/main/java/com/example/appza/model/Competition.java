@@ -12,20 +12,22 @@
 package com.example.appza.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+
+import javax.persistence.*;
 import java.util.Date;
 import java.util.UUID;
 
 @Data
 @Entity(name = "competition")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Competition {
     @Id
-    private Long id;
+    private UUID id;
     private String name;
     @ManyToOne
     private Sport sport;

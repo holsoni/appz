@@ -1,6 +1,8 @@
 package com.example.appza.model;
 
+import com.fasterxml.jackson.databind.deser.impl.CreatorCandidate;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,9 +14,13 @@ import java.util.UUID;
 
 @Data
 @Entity(name="sportclub")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class SportClub {
     @Id
-    private Long id;
+    private UUID id;
+    private String name;
     private String creator;
     private String foundationYear;
     @ManyToMany

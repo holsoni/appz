@@ -1,16 +1,16 @@
 package com.example.appza.controller;
 
-import com.example.appza.model.Building;
-import com.example.appza.model.Sport;
+import com.example.appza.DTO.Sportsmen.SportsmenCreateRequest;
+import com.example.appza.DTO.Sportsmen.SportsmenResponse;
+import com.example.appza.DTO.Sportsmen.SportsmenUpdateRequest;
 import com.example.appza.model.Sportsmen;
-import com.example.appza.service.BuildingService;
-import com.example.appza.service.SportsmenService;
+import com.example.appza.service.Sportsmen.SportsmenService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/sportsmen")
@@ -18,27 +18,27 @@ import java.util.List;
 public class SportsmenController {
     private final SportsmenService service;
     @GetMapping()
-    public ResponseEntity<Page<Sportsmen>> getAll(@RequestParam(required = false, defaultValue = "10") Integer size,
-                                                 @RequestParam(required = false,defaultValue = "1") Integer page){
+    public ResponseEntity<Page<SportsmenResponse>> getAll(@RequestParam(required = false, defaultValue = "10") Integer size,
+                                                          @RequestParam(required = false,defaultValue = "1") Integer page){
         return ResponseEntity.ok(service.getAll(page,size));
     }
 
     @GetMapping("/getById/{id}")
-    public Sportsmen getById(@PathVariable Long id) {
-        return service.getById(id);
+    public ResponseEntity<SportsmenResponse> getById(@PathVariable UUID id) {
+        return ResponseEntity.ok(service.getById(id));
     }
 
     @PostMapping("/create")
-    public Sportsmen create(@RequestBody Sportsmen sportsmen) {
-        return service.create(sportsmen);
+    public ResponseEntity<SportsmenResponse> create(@RequestBody SportsmenCreateRequest sportsmen) {
+        return ResponseEntity.ok(service.create(sportsmen));
     }
 
     @PutMapping("/update")
-    public Sportsmen update(@PathVariable Long id, @RequestBody Sportsmen sportsmen) {
-        return service.update(sportsmen);
+    public ResponseEntity<SportsmenResponse> update(@PathVariable UUID id, @RequestBody SportsmenUpdateRequest sportsmen) {
+        return ResponseEntity.ok(service.update(sportsmen));
     }
     @DeleteMapping("/delete/{id}")
-    public String delete(Long id) {
+    public String delete(UUID id) {
         return service.delete(id);
     }
 }
